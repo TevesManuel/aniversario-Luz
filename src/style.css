@@ -88,6 +88,38 @@ body{
   animation: explodeSmall 10s infinite;
 }
 
+#reload-button {
+  transition: transform 1s;
+}
+#reload-button.rotate {  
+  transform: rotate(360deg);
+}
+#alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.alert-content {
+  background-color: rgba(200, 200, 200, 255);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+}
+#close-alert {
+  padding: 10px 20px;
+  background-color: #d9534f;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
 
 .endtext{
   opacity:0;
