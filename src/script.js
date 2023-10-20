@@ -1,5 +1,35 @@
 let last_indice = null;
+let phrases = null;
 let set_phrase = () => {
+  
+    let indice = null;
+    if(indice != null)
+    {
+      indice = last_indice;
+      while(Math.abs(indice - last_indice) < 3)
+      {
+        indice = Math.floor(Math.random() * ((phrases.split('\n').length)));
+      }
+      last_indice = indice;
+    }
+    else
+    {
+      indice = Math.floor(Math.random() * ((phrases.split('\n').length)));
+    }
+    if(indice % 2 != 0)
+    {
+      indice = indice - 1;
+    }
+    document.getElementById("frase").innerHTML = phrases.split('\n')[indice];
+    document.getElementById("frasefrom").innerHTML = phrases.split('\n')[indice+1];
+};
+let date_difference_in_months = (first_date, last_date) => {
+  return (last_date.getFullYear() - first_date.getFullYear()) * 12 + last_date.getMonth() - first_date.getMonth();
+}
+let date_difference_in_years = (first_date, last_date) => {
+  return last_date.getFullYear() - first_date.getFullYear();
+}
+window.onload = () => {
   fetch("https://raw.githubusercontent.com/TevesManuel/aniversario-Luz/main/src/frases.txt")
   .then(response => {
     if (!response.ok)
@@ -9,38 +39,12 @@ let set_phrase = () => {
     return response.text();
   })
   .then(data => {
-    let indice = null;
-    if(indice != null)
-    {
-      indice = last_indice;
-      while(Math.abs(indice - last_indice) < 2)
-      {
-        indice = Math.floor(Math.random() * ((data.split('\n').length)));
-      }
-      last_indice = indice;
-    }
-    else
-    {
-      indice = Math.floor(Math.random() * ((data.split('\n').length)));
-    }
-    if(indice % 2 != 0)
-    {
-      indice = indice - 1;
-    }
-    document.getElementById("frase").innerHTML = data.split('\n')[indice];
-    document.getElementById("frasefrom").innerHTML = data.split('\n')[indice+1];
+    phrases = data;
   })
   .catch(error => {
     console.error(`Error: ${error}`);
   });
-};
-let date_difference_in_months = (first_date, last_date) => {
-  return (last_date.getFullYear() - first_date.getFullYear()) * 12 + last_date.getMonth() - first_date.getMonth();
-}
-let date_difference_in_years = (first_date, last_date) => {
-  return last_date.getFullYear() - first_date.getFullYear();
-}
-window.onload = () => {
+
   const date = new Date();
 
   const day = String(date.getDate()).padStart(2, '0');
