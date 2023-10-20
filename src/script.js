@@ -73,7 +73,7 @@ window.onload = () => {
   const month = String(date.getMonth() + 1).padStart(2, '0');
   const year = date.getFullYear();
 
-  if(day == "20")
+  if(day == "22")
   {
     //mes aniversario
     document.getElementById("title-alert").innerHTML = "Feliz mes aniversario nro " + date_difference_in_months(new Date("2023-09-23"), new Date());
