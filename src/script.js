@@ -21,8 +21,8 @@ let set_phrase = () => {
       {
         indice = indice - 1;
       }
-      document.getElementById("frase").innerHTML = phrases.split('\n')[indice];
-      document.getElementById("frasefrom").innerHTML = phrases.split('\n')[indice+1];
+      document.getElementById("frase").innerHTML = phrases.split('\n')[indice+1];
+      document.getElementById("frasefrom").innerHTML = phrases.split('\n')[indice];
     }
     else
     {
