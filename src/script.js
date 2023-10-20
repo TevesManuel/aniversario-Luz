@@ -37,7 +37,7 @@ let date_difference_in_years = (first_date, last_date) => {
 }
 let setCookie = (name, value, days_to_expirate) => {
   const expirationDate = new Date();
-  expirationDatesetTime(expirationDate.getTime() + (days_to_expirate * 24 * 60 * 60 * 1000));
+  expirationDate.setTime(expirationDate.getTime() + (days_to_expirate * 24 * 60 * 60 * 1000));
   const expires = "expires=" + expirationDate.toUTCString();
   document.cookie = name + "=" + value + "; " + expires;
 }
@@ -87,9 +87,8 @@ window.onload = () => {
     {
       document.getElementById("title-alert").innerHTML = "Feliz primer mes";
     }
-    if (document.cookie.indexOf("last_view=") != day + "/" + month + "/" + year)
+    if (decodeURIComponent(getCookie("last_view")) != day + "/" + month + "/" + year)
     {
-      console.log(document.cookie);
       setCookie("last_view", encodeURIComponent(day + "/" + month + "/" + year), 9999);
       document.getElementById("alert").style.display = "flex";
     }
