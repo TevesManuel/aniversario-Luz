@@ -89,7 +89,6 @@ window.onload = () => {
     }
     if (decodeURIComponent(getCookie("last_view")) != day + "/" + month + "/" + year)
     {
-      setCookie("last_view", encodeURIComponent(day + "/" + month + "/" + year), 9999);
       document.getElementById("alert").style.display = "flex";
     }
   }
@@ -101,6 +100,7 @@ window.onload = () => {
     set_phrase();
   };
   document.getElementById("close-alert").onclick = () => {
+    setCookie("last_view", encodeURIComponent(day + "/" + month + "/" + year), 9999);
     document.getElementById("alert").style.display = "none";
   }
   document.getElementById("title").onclick = () => {
