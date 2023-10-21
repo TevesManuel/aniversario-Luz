@@ -22,7 +22,7 @@ let set_phrase = () => {
         indice = indice - 1;
       }
       document.getElementById("frase").innerHTML = phrases.split('\n')[indice+1];
-      document.getElementById("frasefrom").innerHTML = phrases.split('\n')[indice];
+      document.getElementById("frasefrom").innerHTML = "- " + phrases.split('\n')[indice] + " -";
     }
     else
     {
@@ -50,6 +50,10 @@ let getCookie = (name) => {
     }
   }
   return null; // La cookie no se encontró
+}
+let set_couple_days = () => 
+{
+  document.getElementById("dayscounter").innerHTML = Math.floor((new Date() - new Date("2023-09-23"))/ (1000 * 60 * 60 * 24)).toString() + " dias siendo novios";
 }
 window.onload = () => {
   fetch("https://raw.githubusercontent.com/TevesManuel/aniversario-Luz/main/src/frases.txt")
@@ -94,19 +98,21 @@ window.onload = () => {
   }
 
   set_phrase();
-
+  set_couple_days();
+  
   document.getElementById('reload-button').onclick = () => {
     document.getElementById("reload-button").classList.toggle('rotate');
     set_phrase();
   };
   document.getElementById("close-alert").onclick = () => {
     setCookie("last_view", encodeURIComponent(day + "/" + month + "/" + year), 9999);
-    document.getElementById("alert").style.display = "none";
   }
   document.getElementById("title").onclick = () => {
     document.getElementById("container").classList.add("open");
+    document.getElementById("dayscounterdiv").style.display = "none";
   };
   document.getElementById("close").onclick = () => {
     document.getElementById("container").classList.remove("open");
+    document.getElementById("dayscounterdiv").style.display = "flex";
   };
 };
