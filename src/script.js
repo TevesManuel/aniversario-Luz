@@ -106,6 +106,7 @@ window.onload = () => {
   };
   document.getElementById("close-alert").onclick = () => {
     setCookie("last_view", encodeURIComponent(day + "/" + month + "/" + year), 9999);
+      document.getElementById("alert").style.display = "none";
   }
   document.getElementById("title").onclick = () => {
     document.getElementById("container").classList.add("open");
