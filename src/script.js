@@ -53,7 +53,9 @@ let getCookie = (name) => {
 }
 let set_couple_days = () => 
 {
-  document.getElementById("dayscounter").innerHTML = Math.floor((new Date() - new Date("2023-09-22"))/ (1000 * 60 * 60 * 24)).toString() + " dias siendo novios";
+  let current_date = new Date();
+  current_date.setHours(0,0,0,0);
+  document.getElementById("dayscounter").innerHTML = (/*1 +*/ Math.floor(( current_date - new Date("2023-09-22")) / (1000 * 60 * 60 * 24))).toString() + " dias siendo novios";
 }
 window.onload = () => {
   fetch("https://raw.githubusercontent.com/TevesManuel/aniversario-Luz/main/src/frases.txt")
